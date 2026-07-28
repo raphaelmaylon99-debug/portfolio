@@ -1,0 +1,279 @@
+    /* ===================================
+    1. IMPORT DE FONTES & VARIÁVEIS TECH
+    =================================== */
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;600&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --bg-main: #0a0c10;          /* Fundo ultra escuro estilo terminal */
+        --bg-card: #12161f;          /* Fundo dos cards estilo IDE */
+        --border-tech: #1f293d;      /* Bordas sutis */
+        --green-neon: #00ff88;       /* Verde código/terminal */
+        --cyan-tech: #38bdf8;        /* Azul de destaque para comandos */
+        --text-main: #e2e8f0;
+        --text-muted: #8b949e;
+        --font-code: 'Fira Code', monospace;
+        --font-main: 'Inter', sans-serif;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        font-family: var(--font-main);
+        line-height: 1.6;
+        /* Efeito sutil de linhas de grade estilo monitor */
+        background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        background-size: 30px 30px;
+    }
+
+    /* ===================================
+    2. CABEÇALHO / NAVBAR (STYLE TERMINAL)
+    =================================== */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 8%;
+        background-color: rgba(10, 12, 16, 0.9);
+        border-bottom: 1px solid var(--border-tech);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(8px);
+    }
+
+    header .logo {
+        font-family: var(--font-code);
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--green-neon);
+    }
+
+    header .logo::before {
+        content: "raphael@sys:~$ ";
+        color: var(--cyan-tech);
+    }
+
+    nav a {
+        font-family: var(--font-code);
+        color: var(--text-muted);
+        text-decoration: none;
+        margin-left: 20px;
+        font-size: 0.9rem;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: var(--green-neon);
+    }
+
+    /* ===================================
+    3. HOME / HERO SECTION
+    =================================== */
+    .home {
+        min-height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+    }
+
+    .home h1 {
+        font-family: var(--font-code);
+        font-size: 2.5rem;
+        color: var(--text-main);
+        margin-bottom: 15px;
+    }
+
+    .home h1::before {
+        content: "> ";
+        color: var(--green-neon);
+    }
+
+    .home p {
+        font-family: var(--font-code);
+        font-size: 1.1rem;
+        color: var(--cyan-tech);
+        margin-bottom: 30px;
+    }
+
+    /* Botão estilo Terminal Command */
+    .btn {
+        font-family: var(--font-code);
+        background: transparent;
+        color: var(--green-neon);
+        padding: 12px 24px;
+        text-decoration: none;
+        border: 1px solid var(--green-neon);
+        border-radius: 4px;
+        font-weight: 600;
+        transition: all 0.3s;
+        box-shadow: 0 0 10px rgba(0, 255, 136, 0.1);
+    }
+
+    .btn:hover {
+        background: var(--green-neon);
+        color: #000;
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+    }
+
+    /* ===================================
+    4. SEÇÕES & CARDS ESTILO JANELA LINUX
+    =================================== */
+    section {
+        padding: 70px 8%;
+        text-align: center;
+    }
+
+    section h2 {
+        font-family: var(--font-code);
+        font-size: 1.8rem;
+        color: var(--text-main);
+        margin-bottom: 30px;
+    }
+
+    section h2::before {
+        content: "~/ ";
+        color: var(--cyan-tech);
+    }
+
+    .sobre p {
+        max-width: 800px;
+        margin: 0 auto;
+        color: var(--text-muted);
+        font-size: 1.05rem;
+        text-align: justify;
+        background: var(--bg-card);
+        padding: 25px;
+        border: 1px solid var(--border-tech);
+        border-radius: 6px;
+    }
+
+    /* Grid de Cards */
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 20px;
+    }
+
+    /* Card estilo Janela de Código / Terminal */
+    .card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-tech);
+        border-radius: 8px;
+        padding: 20px;
+        text-align: left;
+        position: relative;
+        transition: transform 0.2s, border-color 0.2s;
+    }
+
+    /* Barra de Botões do Terminal (Vermelho, Amarelo, Verde) no topo de cada card */
+    .card::before {
+        content: "•••";
+        position: absolute;
+        top: 8px;
+        right: 15px;
+        font-size: 1rem;
+        letter-spacing: 2px;
+        color: #ff5f56; /* Simula os botões de fechar/minimizar */
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        border-color: var(--green-neon);
+    }
+
+    .card h3 {
+        font-family: var(--font-code);
+        color: var(--green-neon);
+        font-size: 1.15rem;
+        margin-bottom: 10px;
+    }
+
+    .card .periodo {
+        display: inline-block;
+        font-family: var(--font-code);
+        font-size: 0.75rem;
+        background: #1c2333;
+        color: var(--cyan-tech);
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-bottom: 12px;
+        border: 1px solid var(--border-tech);
+    }
+
+    .card p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+    }
+
+    .card ul {
+        margin-left: 18px;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+
+    .card ul li {
+        margin-bottom: 6px;
+    }
+
+    /* ===================================
+    5. RODAPÉ & CONTATO
+    =================================== */
+    footer {
+        background-color: #07080b;
+        padding: 50px 8% 30px;
+        text-align: center;
+        border-top: 1px solid var(--border-tech);
+    }
+
+    footer h2 {
+        font-family: var(--font-code);
+    }
+
+    .links-contato {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 30px 0;
+    }
+
+    .btn-contato {
+        font-family: var(--font-code);
+        background: var(--bg-card);
+        color: var(--text-main);
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 4px;
+        border: 1px solid var(--border-tech);
+        font-size: 0.9rem;
+        transition: all 0.3s;
+    }
+
+    .btn-contato:hover {
+        border-color: var(--green-neon);
+        color: var(--green-neon);
+        background: #161b26;
+    }
+
+    .copyright {
+        font-family: var(--font-code);
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-top: 30px;
+    }
